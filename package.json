@@ -1,0 +1,52 @@
+{
+  "name": "crate-designer-3d",
+  "version": "1.0.0",
+  "description": "Crate Designer 3D desktop and Android application",
+  "private": true,
+  "author": "Crate Designer",
+  "license": "UNLICENSED",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "build:windows": "electron-builder --win nsis --x64",
+    "prepare:android": "npx cap add android",
+    "build:android": "npm run prepare:android && npx cap sync android && cd android && ./gradlew assembleDebug"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/cli": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
+    "electron": "^37.2.6",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.cratedesigner.threed",
+    "productName": "Crate Designer 3D",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron/**/*",
+      "www/**/*",
+      "package.json"
+    ],
+    "win": {
+      "icon": "assets/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Crate Designer 3D"
+    }
+  }
+}

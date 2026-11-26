@@ -1,0 +1,6 @@
+{
+  "appId": "com.cratedesigner.threed",
+  "appName": "Crate Designer 3D",
+  "webDir": "www",
+  "server": { "androidScheme": "https" }
+}
